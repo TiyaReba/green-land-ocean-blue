@@ -1,5 +1,6 @@
+// The prefilled WhatsApp message. Edit the text here.
 const DEFAULT_MESSAGE =
-  "Hello, I would like to know more about your products and distributorship.";
+  "Hi, I am interested in becoming a distributor. Please share more details.";
 
 // Returns digits only, or null if the number is missing or not plausible.
 export function getWhatsAppNumber(): string | null {
@@ -14,8 +15,7 @@ export function buildWhatsAppUrl(message?: string): string | null {
   const number = getWhatsAppNumber();
   if (!number) return null;
 
-  const text =
-    message ?? process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE ?? DEFAULT_MESSAGE;
+  const text = message ?? DEFAULT_MESSAGE;
 
   return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 }
